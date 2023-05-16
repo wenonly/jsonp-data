@@ -17,17 +17,17 @@
     value: true
   });
   _exports.default = void 0;
+  var _globalThis$document;
   // value 都需要 base64 加密
   const exportData = "eyJhIjoxLCJiIjoyfQ==";
 
   // 用于 浏览器 跨域获取数据
-  const currentScript = document.currentScript;
+  const currentScript = (_globalThis$document = globalThis.document) === null || _globalThis$document === void 0 ? void 0 : _globalThis$document.currentScript;
   if (currentScript) {
-    var _window;
     const src = currentScript.src;
     const urlObj = new URL(src);
     const exportFuncName = urlObj.searchParams.get('exportFunc');
-    const exportFunc = (_window = window) === null || _window === void 0 ? void 0 : _window[exportFuncName];
+    const exportFunc = globalThis === null || globalThis === void 0 ? void 0 : globalThis[exportFuncName];
     if (typeof exportFunc === 'function') {
       exportFunc(exportData);
     }

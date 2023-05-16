@@ -4,8 +4,9 @@
   "description": "generate jsonp file by nodejs, read jsonp file by nodejs or brower",
   "main": "lib/index.js",
   "scripts": {
-    "dev:node": "npm run build:node && node examples/generateJsonp.js",
-    "build:node": "tsc src/generate.ts --outDir lib"
+    "build:node": "tsc src/index.ts --outDir lib",
+    "test:node": "npm run build:node && node examples/main.js",
+    "test:brower": "http-server examples"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/wenonly/jsonp-data#readme",
   "devDependencies": {
     "@types/node": "^20.1.4",
+    "http-server": "^14.1.1",
     "typescript": "^5.0.4"
   },
   "dependencies": {
