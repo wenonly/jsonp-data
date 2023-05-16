@@ -1,4 +1,4 @@
-export function readJsonp(filePath: string) {
+export function readJsonpData(filePath: string) {
   const base64Data = require(filePath).default;
   const jsonStr = Buffer.from(base64Data, 'base64').toString();
   const jsonData = JSON.parse(jsonStr);

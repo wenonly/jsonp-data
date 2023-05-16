@@ -1,13 +1,13 @@
 import * as babel from '@babel/core';
-import * as fs from 'fs';
+import { promises as fs } from 'fs';
 import * as path from 'path';
 
 const DATA_SLOT = '{{data}}';
 
-export function getJsonpFromData(data): string {
+export async function getJsonpFromData(data): Promise<string> {
   const dataStr = JSON.stringify(data);
   const dataBase64 = Buffer.from(dataStr).toString('base64');
-  const jsonpTemplateJs = fs.readFileSync(
+  const jsonpTemplateJs = await fs.readFile(
     path.resolve(__dirname, '../template/jsonp_template.js'),
     { encoding: 'utf-8' }
   );
@@ -15,7 +15,8 @@ export function getJsonpFromData(data): string {
     DATA_SLOT,
     dataBase64
   );
-  const result = babel.transform(jsonpTemplateJsWithData, {
+  const result = await babel.transformAsync(jsonpTemplateJsWithData, {
+    configFile: false,
     presets: [
       [
         '@babel/preset-env',
@@ -34,8 +35,8 @@ export function getJsonpFromData(data): string {
   return result?.code ?? '';
 }
 
-export function generateJsonp(filePath: string, data: any) {
-  fs.writeFileSync(filePath, getJsonpFromData(data), {
+export async function generateJsonp(filePath: string, data: any) {
+  await fs.writeFile(filePath, await getJsonpFromData(data), {
     encoding: 'utf-8',
   });
 }

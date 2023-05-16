@@ -1,2 +1,2 @@
 # jsonp-data
-generate jsonp file by nodejs, read jsonp file by nodejs or brower
+jsonp database, generate jsonp data file by nodejs, read jsonp data file by nodejs or browser

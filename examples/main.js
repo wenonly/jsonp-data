@@ -1,6 +1,8 @@
-const { generateJsonp, readJsonp } = require('../lib/index');
+const { generateJsonp, readJsonpData } = require('../lib/index');
 const path = require('path');
 
-generateJsonp(path.resolve(__dirname, 'outJsonp.js'), { a: 1, b: 2 });
+(async function () {
+  await generateJsonp(path.resolve(__dirname, 'outJsonp.js'), { a: 1, b: 2 });
 
-console.log(readJsonp(path.resolve(__dirname, 'outJsonp.js')));
+  console.log(readJsonpData(path.resolve(__dirname, 'outJsonp.js')));
+})();
