@@ -10,7 +10,7 @@
   <body>
     <div id="app"></div>
     <script>
-      JsonpD.readJsonpData('http://localhost:8080/examples/outJsonp.js').then(
+      JsonpData.readJsonpData('http://localhost:8080/examples/outJsonp.js').then(
         (data) => {
           console.log(data)
           document.querySelector('#app').innerHTML = JSON.stringify(data);

@@ -4,7 +4,8 @@ import * as path from 'path';
 
 const DATA_SLOT = '{{data}}';
 
-export async function getJsonpFromData(data): Promise<string> {
+// 根据data数据返回生成的jsonp data格式字符串
+export async function getJsonpFromData(data: any): Promise<string> {
   const dataStr = JSON.stringify(data);
   const dataBase64 = Buffer.from(dataStr).toString('base64');
   const jsonpTemplateJs = await fs.readFile(
@@ -35,6 +36,7 @@ export async function getJsonpFromData(data): Promise<string> {
   return result?.code ?? '';
 }
 
+// 将json数据生成jsonp文件
 export async function generateJsonp(filePath: string, data: any) {
   await fs.writeFile(filePath, await getJsonpFromData(data), {
     encoding: 'utf-8',
