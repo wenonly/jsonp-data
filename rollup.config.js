@@ -1,11 +1,15 @@
-const typescript = require('@rollup/plugin-typescript');
+const typescript = require("@rollup/plugin-typescript");
 
 module.exports = {
-  input: 'src/read.browser.ts',
+  input: "src/read.browser.ts",
   output: {
-    file: 'lib/jsonp-data.browser.js',
-    format: 'umd',
-    name: 'JsonpData',
+    file: "lib/jsonp-data.browser.js",
+    format: "umd",
+    name: "JsonpData",
   },
-  plugins: [typescript()],
+  plugins: [
+    typescript({
+      declaration: false,
+    }),
+  ],
 };
