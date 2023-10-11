@@ -1,6 +1,6 @@
 {
   "name": "jsonp-data",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "generate jsonp file by nodejs, read jsonp file by nodejs or brower",
   "main": "lib/index.js",
   "scripts": {

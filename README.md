@@ -18,12 +18,13 @@ const path = require('path');
 
   // 读取jsonp文件json数据
   const data = readJsonpData(filePath);
-  console.log(data);
+  console.log(data); // 打印 { a: 1, b: 2 }
 })();
 ```
 
 ## 浏览器端
 
+### script 引入方式
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -47,4 +48,11 @@ const path = require('path');
     </script>
   </body>
 </html>
+```
+
+### npm引入方式
+1. 先通过`npm install jsonp-data`安装包
+2. 引入
+```javascript
+import { readJsonpData } from 'jsonp-data/lib/read.browser'
 ```
