@@ -4,13 +4,14 @@ module.exports = [
   {
     input: "src/read.browser.ts",
     output: {
-      file: "lib/jsonp-data.browser.js",
+      file: "lib/read.browser.js",
       format: "umd",
       name: "JsonpData",
     },
     plugins: [
       typescript({
-        declaration: false,
+        declaration: true,
+        declarationDir: "lib",
       }),
     ],
   },
