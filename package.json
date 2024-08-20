@@ -4,9 +4,7 @@
   "description": "generate jsonp file by nodejs, read jsonp file by nodejs or brower",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npm run build:node && npm run build:browser",
-    "build:browser": "rimraf lib/jsonp-data.browser.js && rollup -c",
-    "build:node": "rimraf lib && tsc --outDir lib",
+    "build": "rimraf lib && rollup -c",
     "test": "npm run test:node && npm run test:browser",
     "test:node": "npm run build:node && node examples/main.js",
     "test:browser": "npm run build:browser && http-server ."
