@@ -7,10 +7,22 @@ export function readJsonpData<T = any>(fileUrl: string): Promise<T> {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
     (window as any)[exportFuncName] = function (data: string) {
-      const dataStr = window.atob(data);
+      // 使用 atob() 解码
+      const binaryString = atob(data);
+
+      // 将二进制字符串转换为 Uint8Array
+      const bytes = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+
+      // 使用 TextDecoder 将 Uint8Array 转换为 UTF-8 字符串
+      const decoder = new TextDecoder("utf-8");
+      const decodedString = decoder.decode(bytes);
+
       document.body.removeChild(script);
       delete (window as any)[exportFuncName];
-      resolve(JSON.parse(dataStr));
+      resolve(JSON.parse(decodedString));
     };
     script.onerror = (e) => {
       reject(e);

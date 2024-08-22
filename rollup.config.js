@@ -30,10 +30,10 @@ module.exports = [
   },
   {
     input: "src/index.ts",
+    external: ["fs", "path", "@babel/core", "mkdirp"],
     output: {
       file: "lib/index.js",
-      format: "umd",
-      name: "JsonpData",
+      format: "cjs",
     },
     plugins: [
       typescript({
