@@ -1,6 +1,9 @@
 let uid = 0;
 
-export function readJsonpData<T = any>(fileUrl: string): Promise<T> {
+export function readJsonpData<T = any>(url: string): Promise<T> {
+  let fileUrl = url.startsWith("http")
+    ? url
+    : location.origin + (url.startsWith("/") ? url : "/" + url);
   const exportFuncName: string = `_jsonp_data_read${uid++}_`;
   const fileURLObject = new URL(fileUrl);
   fileURLObject.searchParams.append("exportFunc", exportFuncName);
